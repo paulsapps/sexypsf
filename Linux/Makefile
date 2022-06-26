@@ -9,7 +9,7 @@ STRIP = strip
 
 FLAGS = -D__LINUX__ -DPSS_STYLE=1 
 #-DTIMEO
-LIBS = -lz
+LIBS = -lz -lSDL2
 
 OBJS = ../PsxBios.o ../PsxCounters.o ../PsxDma.o \
        ../Spu.o ../PsxHw.o ../PsxMem.o ../Misc.o \

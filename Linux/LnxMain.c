@@ -25,8 +25,12 @@
 #include <string.h>
 #include <time.h>
 
+#include <SDL2/SDL.h>
+
 #include "driver.h"
 #include "Linux.h"
+
+extern SDL_AudioDeviceID sdlDevId;
 
 int main(int argc, char *argv[]) {
 	PSFINFO *pi;
@@ -49,5 +53,12 @@ int main(int argc, char *argv[]) {
 	 }
 	}
 	sexy_execute();
+	    SDL_PauseAudioDevice(sdlDevId, 0);
+
+	while(SDL_GetQueuedAudioSize(sdlDevId) > 0)
+	{
+		SDL_Delay(1000);
+	}
+
 	return 0;
 }
