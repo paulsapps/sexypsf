@@ -35,7 +35,7 @@
 #define PS '\\'
 #endif
 
-#include <zlib.h>
+//#include <zlib.h>
 
 #include <sys/types.h>
 #include "types.h"

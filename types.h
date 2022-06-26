@@ -16,8 +16,12 @@ typedef uint32_t u32;
 typedef uint64_t u64;
 
 
-
+#ifdef _MSC_VER
+#define PACKSTRUCT 
+#else
 /* For gcc only? */
 #define PACKSTRUCT	__attribute__ ((packed))
+#endif
+
 
 #endif

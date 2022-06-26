@@ -40,15 +40,32 @@
 
 //#include "stdafx.h"
 
-#define _IN_REGISTERS
+//#define _IN_REGISTERS
+
+#include "types.h"
+#include "externals.h"
+#include "spu.h"
 
 //#include "externals.h"
-//#include "registers.h"
-//#include "regs.h"
+#include "registers.h"
+#include "regs.h"
 
 ////////////////////////////////////////////////////////////////////////
 // WRITE REGISTERS: called by main emu
 ////////////////////////////////////////////////////////////////////////
+
+extern u16  regArea[];
+extern SPUCHAN         s_chan[];
+extern u8* spuMemC;
+extern REVERBInfo      rvb;
+extern u32  spuAddr;
+extern u16  spuMem[];
+extern u16  spuCtrl;                             // some vars to store psx reg infos
+extern u16  spuStat;
+extern u16  spuIrq;
+extern u8* pSpuIrq;
+
+static void SetVolumeLR(int right, u8 ch, s16 vol);
 
 void SPUwriteRegister(u32 reg, u16 val)
 {

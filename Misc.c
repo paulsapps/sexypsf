@@ -24,6 +24,14 @@
 #include "PsxCommon.h"
 #include "driver.h"
 
+#include "miniz.h"
+
+#ifdef _MSC_VER
+#define strcasecmp _stricmp
+#define strncasecmp _strnicmp
+#endif
+
+
 // LOAD STUFF
 
 typedef struct {
@@ -231,12 +239,12 @@ static PSFINFO *LoadPSF(char *path, int level, int type) // Type==1 for just inf
         u32 reserved;
         u32 complen;
         u32 crc32; 
-        uLongf outlen;
+        unsigned long int outlen;
 	PSFINFO *psfi;
 	PSFINFO *tmpi;
 
 	//printf("Loading: %s\n",path);
-        if(!(fp=fopen(path,"rb")))
+        if(!path || !(fp=fopen(path,"rb")))
  	{
 	 return(0);
 	}
@@ -266,7 +274,9 @@ static PSFINFO *LoadPSF(char *path, int level, int type) // Type==1 for just inf
          out=malloc(1024*1024*2+0x800);
          fread(in,1,complen,fp);
          outlen=1024*1024*2;
-         uncompress(out,&outlen,in,complen);
+         
+         mz_uncompress(out,&outlen,in,complen);
+
          free(in);
          memcpy(&tmpHead,out,sizeof(EXE_HEADER));
          psxRegs.pc = BFLIP32(tmpHead.pc0);

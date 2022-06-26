@@ -1,3 +1,5 @@
+#pragma once
+
 /*  Pcsx - Pc Psx Emulator
  *  Copyright (C) 1999-2002  Pcsx Team
  *

@@ -28,10 +28,16 @@
 
 #define _IN_DMA
 
+#include "types.h"
+#include "PsxMem.h"
+
 //#include "externals.h"
 ////////////////////////////////////////////////////////////////////////
 // READ DMA (many values)
 ////////////////////////////////////////////////////////////////////////
+
+extern u16  spuMem[];
+extern u32  spuAddr;
 
 void SPUreadDMAMem(u32 usPSXMem,int iSize)
 {

@@ -18,18 +18,13 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <string.h>
 #include <ctype.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <sys/ioctl.h>
-#include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <sched.h>
-#include <sys/soundcard.h>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 //*************************************************************************//
 // History of changes:
@@ -47,7 +42,7 @@
 
 #define _IN_OSS
 
-#ifndef _WINDOWS
+//#ifndef _WINDOWS
 
 ////////////////////////////////////////////////////////////////////////
 // oss globals
@@ -56,7 +51,7 @@
 #define OSS_MEM_DEF
 #include "oss.h"
 //static int oss_audio_fd = -1;
-extern int errno;
+//extern int errno;
 
 ////////////////////////////////////////////////////////////////////////
 // SETUP SOUND
@@ -207,4 +202,4 @@ void sexyd_update(unsigned char* pSound,long lBytes)
   }*/
 }
 
-#endif
+//#endif

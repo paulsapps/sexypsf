@@ -94,26 +94,26 @@
 
 // psx buffer / addresses
 
-static u16  regArea[0x200];
-static u16  spuMem[256*1024];
-static u8 * spuMemC;
-static u8 * pSpuIrq=0;
-static u8 * pSpuBuffer;
+u16  regArea[0x200];
+u16  spuMem[256*1024];
+u8 * spuMemC;
+u8 * pSpuIrq=0;
+u8 * pSpuBuffer;
 
 // user settings          
 static int             iVolume;
                                
 // MAIN infos struct for each channel
 
-static SPUCHAN         s_chan[MAXCHAN+1];                     // channel + 1 infos (1 is security for fmod handling)
-static REVERBInfo      rvb;
+SPUCHAN         s_chan[MAXCHAN+1];                     // channel + 1 infos (1 is security for fmod handling)
+REVERBInfo      rvb;
 
 static u32   dwNoiseVal=1;                          // global noise generator
 
-static u16  spuCtrl=0;                             // some vars to store psx reg infos
-static u16  spuStat=0;
-static u16  spuIrq=0;             
-static u32  spuAddr=0xffffffff;                    // address into spu mem
+u16  spuCtrl=0;                             // some vars to store psx reg infos
+u16  spuStat=0;
+u16  spuIrq=0;             
+u32  spuAddr=0xffffffff;                    // address into spu mem
 static int  bSPUIsOpen=0;
 
 static const int f[5][2] = {   
@@ -134,8 +134,8 @@ s16 * pS;
 #include "adsr.c"
 
 // Try this to increase speed.
-#include "registers.c"
-#include "dma.c"
+#include "registers.h"
+#include "dma.h"
 
 ////////////////////////////////////////////////////////////////////////
 // helpers for so-called "gauss interpolation"

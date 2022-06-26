@@ -18,17 +18,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <stdarg.h>
-#include <sys/mman.h>
 #include <errno.h>
 #include <string.h>
 #include <time.h>
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
-#include "driver.h"
 #include "Linux.h"
+#include "driver.h"
 
 extern SDL_AudioDeviceID sdlDevId;
 
